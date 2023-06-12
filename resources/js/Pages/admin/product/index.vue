@@ -150,22 +150,13 @@ const closeAlert = () => {
     openAlert.value = false
 }
 
-const openFile = async (data) => {
+const openFile = async (file_path) => {
   try {
-    const response = await fetch(data);
+    const response = await fetch(file_path);
     const blob = await response.blob();
 
-    const fileReader = new FileReader();
-    fileReader.onload = function(event) {
-      const pdfData = event.target.result;
-      const embed = document.createElement('embed');
-      embed.src = pdfData;
-      embed.width = '100%';
-      embed.height = '100%';
-      const viewer = window.open('', '__blank');
-      viewer.document.body.appendChild(embed);
-    };
-    fileReader.readAsDataURL(blob);
+    const fileUrl = URL.createObjectURL(blob);
+    window.open(fileUrl, '_blank');
   } catch (error) {
     console.error('Gagal membuka file:', error);
   }
@@ -248,7 +239,7 @@ onMounted(() => {
                         :last="index === query.length - 1 ? true : false">
                         <li class="cursor-pointer hover:bg-slate-100" @click="openFile(data.file_path)">
                             <div class="flex justify-between items-center space-x-2 p-3">
-                                <a :href="data.file_path" view>
+                                <a :href="data.file_path" target="_blank">
                                 <span>
                                     <VRead color="primary" />
                                 </span>

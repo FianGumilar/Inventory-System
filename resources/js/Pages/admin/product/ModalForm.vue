@@ -17,6 +17,11 @@ const props = defineProps({
 
 const emit = defineEmits(['close', 'successSubmit'])
 
+const typeOptions = ref({
+    'Sudah': 'Sudah',
+    'Belum': 'Belum',
+})
+
 const isLoading = ref(false);
 const formError = ref({})
 const form = ref({})
@@ -25,7 +30,6 @@ const previewImage = ref('')
 const openForm = () => {
     if (props.updateAction) {
         form.value = Object.assign(form.value, props.data)
-        previewImage.value = props.data.preview_image
     } else {
         form.value = ref({})
     }
@@ -149,8 +153,8 @@ const create = async () => {
                         @update:modelValue="formError.file_path = ''" />
                 </div>
                 <div class="col-span-2">
-                    <VInput placeholder="Scan status" label="Scan" :required="true" v-model="form.is_input" :errorMessage="formError.is_input"
-                        @update:modelValue="formError.is_input = ''" />
+                    <VSelect placeholder="Scan Status" label="Scan" :required="true" v-model="form.is_input" :options="typeOptions"
+                    :label="Type" :errorMessage="formError.is_input" @update:modelValue="formError.is_input = ''" ref="typeSelectHandle" /> 
                 </div>
                 <div class="col-span-2">
                     <VSelect placeholder="Choose Unit" :required="true" v-model="form.category_id"
