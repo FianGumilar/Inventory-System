@@ -150,17 +150,9 @@ const closeAlert = () => {
     openAlert.value = false
 }
 
-const openFile = async (file_path) => {
-  try {
-    const response = await fetch(file_path);
-    const blob = await response.blob();
-
-    const fileUrl = URL.createObjectURL(blob);
-    window.open(fileUrl, '_blank');
-  } catch (error) {
-    console.error('Gagal membuka file:', error);
-  }
-};
+function openFile(filePath) {
+  window.open(filePath, '_blank');
+}
 
 const deleteHandle = async () => {
     axios.delete(route('product.delete', { 'id': itemSelected.value.id })
@@ -239,12 +231,10 @@ onMounted(() => {
                         :last="index === query.length - 1 ? true : false">
                         <li class="cursor-pointer hover:bg-slate-100" @click="openFile(data.file_path)">
                             <div class="flex justify-between items-center space-x-2 p-3">
-                                <a :href="data.file_path" target="_blank">
                                 <span>
                                     <VRead color="primary" />
                                 </span>
                                 <span>View</span>
-                                </a>
                             </div>
                         </li>
                         <li class="cursor-pointer hover:bg-slate-100" @click="handleEditModal(data)">
