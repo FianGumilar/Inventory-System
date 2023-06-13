@@ -57,7 +57,7 @@ const updateAction = ref(false)
 const itemSelected = ref({})
 const openAlert = ref(false)
 const openModalForm = ref(false)
-const heads = ["Book Title", "Book Number", "Location","Unit", "Fungsi", "Scan", ""]
+const heads = ["Book Title", "Book Number", "Location","Departemen", "Fungsi", "Scan", ""]
 const isLoading = ref(true)
 
 const props = defineProps({
@@ -233,7 +233,7 @@ onMounted(() => {
                     <p>{{ data.name }}</p>
                     <p>{{ data.utility_name }}</p>
                 </td>
-                <td class="px-4 whitespace-nowrap h-16"> {{ data.is_input }} </td>
+                <td class="px-4 whitespace-nowrap h-16"> {{ data.is_scan }} </td>
                 <td class="px-4 whitespace-nowrap h-16 text-right">
                     <VDropdownEditMenu class="relative inline-flex r-0" :align="'right'"
                         :last="index === query.length - 1 ? true : false">

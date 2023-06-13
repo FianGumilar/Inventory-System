@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Transaction;
+namespace App\Http\Resources\Book;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SubmitOrderResource extends JsonResource
+class SubmitBookResource extends JsonResource
 {
     private $message;
 
@@ -26,12 +26,19 @@ class SubmitOrderResource extends JsonResource
     {
         return [
             'data' => [
-                'id' => $this->id
+                'id' => $this->id,
+                'book_title' => $this->book_title,
+                'book_number' => $this->book_number,
+                'location' => $this->location,
+                'is_scan' => $this->is_scan,
+                'file_path' => $this->file_path,
+                'category_name' => $this->category_name,
+                'utility_name' => $this->utility_name,
             ],
             'meta' => [
                 'success' => true,
                 'message' => $this->message,
-                'pagination' => (object)[],
+                'pagination' => (object) [],
             ],
         ];
     }

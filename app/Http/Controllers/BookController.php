@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Options\GetUtilityOptions;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
-use App\Services\ProductService;
+use App\Services\BookService;
+use App\Actions\Options\GetUtilityOptions;
 use App\Actions\Options\GetCategoryOptions;
-use App\Http\Requests\Product\CreateProductRequest;
-use App\Http\Requests\Product\UpdateProductRequest;
-use App\Http\Resources\Product\ProductListResource;
-use App\Http\Resources\Product\SubmitProductResource;
+use App\Http\Requests\Book\CreateBookRequest;
+use App\Http\Requests\Book\UpdateBookRequest;
+use App\Http\Resources\Book\BookListResource;
+use App\Http\Resources\Book\SubmitBookResource;
 
-class ProductController extends Controller
+class BookController extends Controller
 {
-    public function __construct(ProductService $productService, GetCategoryOptions $getCategoryOptions, GetUtilityOptions $getUtilityOptions)
+    public function __construct(BookService $bookService, GetCategoryOptions $getCategoryOptions, GetUtilityOptions $getUtilityOptions)
     {
-        $this->productService = $productService;
+        $this->bookService = $bookService;
         $this->getCategoryOptions = $getCategoryOptions;
         $this->getUtilityOptions = $getUtilityOptions;
     }
@@ -35,33 +35,33 @@ class ProductController extends Controller
     public function getData(Request $request)
     {
         try {
-            $data = $this->productService->getData($request);
+            $data = $this->bookService->getData($request);
 
-            $result = new ProductListResource($data);
+            $result = new BookListResource($data);
             return $this->respond($result);
         } catch (\Exception $e) {
             return $this->exceptionError($e->getMessage());
         }
     }
 
-    public function createData(CreateProductRequest $request)
+    public function createData(CreateBookRequest $request)
     {
         try {
-            $data = $this->productService->createData($request);
+            $data = $this->bookService->createData($request);
 
-            $result = new SubmitProductResource($data, 'Success Create Product');
+            $result = new SubmitBookResource($data, 'Success Create Book');
             return $this->respond($result);
         } catch (\Exception $e) {
             return $this->exceptionError($e->getMessage());
         }
     }
 
-    public function updateData($id, UpdateProductRequest $request)
+    public function updateData($id, UpdateBookRequest $request)
     {
         try {
-            $data = $this->productService->updateData($id, $request);
+            $data = $this->bookService->updateData($id, $request);
 
-            $result = new SubmitProductResource($data, 'Success Update Product');
+            $result = new SubmitBookResource($data, 'Success Update Book');
             return $this->respond($result);
         } catch (\Exception $e) {
             return $this->exceptionError($e->getMessage());
@@ -71,9 +71,9 @@ class ProductController extends Controller
     public function deleteData($id)
     {
         try {
-            $data = $this->productService->deleteData($id);
+            $data = $this->bookService->deleteData($id);
 
-            $result = new SubmitProductResource($data, 'Success Delete Product');
+            $result = new SubmitBookResource($data, 'Success Delete Book');
             return $this->respond($result);
         } catch (\Exception $e) {
             return $this->exceptionError($e->getMessage());

@@ -31,12 +31,14 @@ class GetSidebarMenuAction
                 'icon' => 'VProduct',
                 'can' => 'view_product'
             ],
+            /** 
             [
                 'text' => 'Report',
                 'url' => route('report.index'),
                 'icon' => 'VBook',
                 'can' => 'view_report'
             ],
+            */
             [
                 'text' => 'Settings',
                 'icon' => 'VSetting',

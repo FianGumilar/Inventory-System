@@ -153,12 +153,12 @@ const create = async () => {
                         @update:modelValue="formError.file_path = ''" />
                 </div>
                 <div class="col-span-2">
-                    <VSelect placeholder="Scan Status" label="Scan" :required="true" v-model="form.is_input" :options="typeOptions"
-                    :label="Type" :errorMessage="formError.is_input" @update:modelValue="formError.is_input = ''" ref="typeSelectHandle" /> 
+                    <VSelect placeholder="Scan Status" label="Scan" :required="true" v-model="form.is_scan" :options="typeOptions"
+                    :errorMessage="formError.is_scan" @update:modelValue="formError.is_scan = ''" ref="typeSelectHandle" /> 
                 </div>
                 <div class="col-span-2">
-                    <VSelect placeholder="Choose Unit" :required="true" v-model="form.category_id"
-                        :options="additional.category_list" label="Unit" :errorMessage="formError.category_id"
+                    <VSelect placeholder="Choose Departemen" :required="true" v-model="form.category_id"
+                        :options="additional.category_list" label="Departemen" :errorMessage="formError.category_id"
                         @update:modelValue="formError.category_id = ''" />
                 </div>
                 <div class="col-span-2">

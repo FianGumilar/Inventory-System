@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Product;
+namespace App\Http\Resources\Book;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class ProductListResource extends ResourceCollection
+class BookListResource extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -31,7 +31,7 @@ class ProductListResource extends ResourceCollection
             'book_title' => $data->book_title,
             'book_number' => $data->book_number,
             'location' => $data->location,
-            'is_input' => $data->is_input,
+            'is_scan' => $data->is_scan,
             'file_path' => $data->file_path,
             'utility_id' => $data->utility_id,
             'utility_name' => $data->utility->name,

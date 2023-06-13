@@ -23,7 +23,7 @@ class UserManagementController extends Controller
     public function index()
     {
         return Inertia::render('admin/settings/user/index', [
-            "title" => 'POS | User managements',
+            "title" => 'User managements',
             "additional" => [
                 'role_list' => $this->getRoleOptions->handle(),
             ]

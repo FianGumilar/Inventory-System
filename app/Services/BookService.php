@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\Product;
+use App\Models\Book;
 use App\Services\FileService;
 
-class ProductService
+class BookService
 {
     public function getData($request)
     {
@@ -13,7 +13,7 @@ class ProductService
         $filter_category = $request->filter_category;
         $filter_utility = $request->filter_utility;
 
-        $query = Product::query();
+        $query = Book::query();
 
         // Filtering data
         $query->when(request('search', false), function ($q) use ($search) {
@@ -32,29 +32,29 @@ class ProductService
     public function createData($request)
     {
         // Create the product after that
-        $inputs = $request->only(['book_title', 'book_number', 'location', 'is_input', 'file_path', 'category_id', 'utility_id']);
-        $product = Product::create($inputs);
+        $inputs = $request->only(['book_title', 'book_number', 'location', 'is_scan', 'file_path', 'category_id', 'utility_id']);
+        $book = Book::create($inputs);
 
-        return $product;
+        return $book;
     }
 
     public function deleteData($id)
     {
-        $product = Product::findOrFail($id);
-        $product->delete();
+        $book = Book::findOrFail($id);
+        $book->delete();
 
-        return $product;
+        return $book;
     }
 
     public function updateData($id, $request)
     {
         // Get Product Data
-        $product = Product::findOrFail($id);
+        $book = Book::findOrFail($id);
 
         // Update the product data
-        $inputs = $request->only(['book_title', 'book_number', 'location', 'is_input', 'file_path', 'category_id', 'utility_id']);
-        $product->update($inputs);
+        $inputs = $request->only(['book_title', 'book_number', 'location', 'is_scan', 'file_path', 'category_id', 'utility_id']);
+        $book->update($inputs);
 
-        return $product;
+        return $book;
     }
 }

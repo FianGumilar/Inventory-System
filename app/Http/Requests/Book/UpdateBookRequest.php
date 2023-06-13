@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Product;
+namespace App\Http\Requests\Book;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProductRequest extends FormRequest
+class UpdateBookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class UpdateProductRequest extends FormRequest
             'book_title' => 'required|string',
             'book_number' => 'required|string',
             'location' => 'required|string',
-            'is_input' => 'required',
+            'is_scan' => 'required',
             'file_path' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'utility_id' => 'required|exists:utilities,id'

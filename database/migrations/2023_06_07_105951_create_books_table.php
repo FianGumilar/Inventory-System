@@ -12,14 +12,14 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('utility_id')->constrained('utilities')->references('id');
             $table->string('book_title');
             $table->string('book_number');
             $table->string('location');
-            $table->string('is_input');
+            $table->string('is_scan');
             $table->string('file_path');
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('books');
     }
 };

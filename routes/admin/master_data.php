@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ Route::controller(CategoryController::class)->middleware('can:view_category')->p
     Route::delete('{id}/delete', 'deleteData')->name('delete');
 });
 
-Route::controller(ProductController::class)->middleware('can:view_product')->prefix('product')->name('product.')->group(function () {
+Route::controller(BookController::class)->middleware('can:view_product')->prefix('book')->name('product.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('get-data', 'getData')->name('getdata');
     Route::post('create', 'createData')->name('create');

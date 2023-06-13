@@ -21,7 +21,7 @@ class RoleManagementController extends Controller
     public function index()
     {
         return Inertia::render('admin/settings/role/index', [
-            "title" => 'POS | Role managements'
+            "title" => 'Role managements'
         ]);
     }
 
@@ -40,7 +40,7 @@ class RoleManagementController extends Controller
     public function createRolePage()
     {
         return Inertia::render('admin/settings/role/create', [
-            "title" => 'POS | Role managements',
+            "title" => 'Role managements',
             "additional" => [
                 'permission_list' => $this->roleManagementService->getPermissionList()
             ]
@@ -50,7 +50,7 @@ class RoleManagementController extends Controller
     public function editRolePage($id)
     {
         return Inertia::render('admin/settings/role/edit', [
-            "title" => 'POS | Role managements',
+            "title" => 'Role managements',
             "additional" => [
                 'permission_list' => $this->roleManagementService->getPermissionList(),
                 'role' => $this->roleManagementService->findRoleById($id),
