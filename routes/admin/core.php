@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UtilityController;
-use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
