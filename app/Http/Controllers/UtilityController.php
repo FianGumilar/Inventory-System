@@ -19,7 +19,7 @@ class UtilityController extends Controller
 
     public function index()
     {
-        return Inertia::render('admin/transaction/index', [
+        return Inertia::render('admin/utility/index', [
             "title" => 'Fungsi'
         ]);
     }

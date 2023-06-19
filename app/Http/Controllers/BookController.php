@@ -23,7 +23,7 @@ class BookController extends Controller
 
     public function index()
     {
-        return Inertia::render('admin/product/index', [
+        return Inertia::render('admin/book/index', [
             "title" => 'Book',
             "additional" => [
                 'category_list' => $this->getCategoryOptions->handle(),
