@@ -6,26 +6,18 @@ import { notify } from "notiwind";
 import VDialog from '@/components/VDialog/index.vue';
 import VButton from '@/components/VButton/index.vue';
 import VInput from '@/components/VInput/index.vue';
-import VSelect from '@/components/VSelect/index.vue';
 
 const props = defineProps({
     openDialog: bool(),
     updateAction: bool().def(false),
-    data: object().def({}),
-    additional: object().def({})
+    data: object().def({})
 })
 
 const emit = defineEmits(['close', 'successSubmit'])
 
-const typeOptions = ref({
-    'Sudah': 'Sudah',
-    'Belum': 'Belum',
-})
-
 const isLoading = ref(false);
 const formError = ref({})
 const form = ref({})
-const previewImage = ref('')
 
 const openForm = () => {
     if (props.updateAction) {
@@ -46,7 +38,7 @@ const submit = async () => {
 
 const update = async () => {
     isLoading.value = true
-    axios.post(route('product.update', { 'id': props.data.id }), form.value)
+    axios.post(route('utility.update', { 'id': props.data.id }), form.value)
         .then((res) => {
             emit('close')
             emit('successSubmit')
@@ -85,7 +77,7 @@ const update = async () => {
 
 const create = async () => {
     isLoading.value = true
-    axios.post(route('product.create'), form.value)
+    axios.post(route('utility.create'), form.value)
         .then((res) => {
             emit('close')
             emit('successSubmit')
@@ -124,7 +116,7 @@ const create = async () => {
 </script>
 
 <template>
-    <VDialog :showModal="openDialog" :title="updateAction ? 'Update Book' : 'Create Book'" @opened="openForm" @closed="closeForm" size="xl">
+    <VDialog :showModal="openDialog" :title="updateAction ? 'Update Fungsi Category' : 'Create Fungsi Category'" @opened="openForm" @closed="closeForm" size="xl">
         <template v-slot:close>
             <button class="text-slate-400 hover:text-slate-500" @click="$emit('close')">
                 <div class="sr-only">Close</div>
@@ -137,34 +129,12 @@ const create = async () => {
         <template v-slot:content>
             <div class="grid grid-cols-2 gap-3">
                 <div class="col-span-2">
-                    <VInput placeholder="Insert Book Title" label="Book Title" :required="true" v-model="form.book_title" :errorMessage="formError.book_title"
-                        @update:modelValue="formError.book_title = ''" />
+                    <VInput placeholder="Insert Fungsi" label="Fungsi" :required="true" v-model="form.name" :errorMessage="formError.name"
+                        @update:modelValue="formError.name = ''" />
                 </div>
                 <div class="col-span-2">
-                    <VInput placeholder="Insert Book Number" label="Book Number" :required="true" v-model="form.book_number" :errorMessage="formError.book_number"
-                        @update:modelValue="formError.book_number = ''" />
-                </div>
-                <div class="col-span-2">
-                    <VInput placeholder="Insert Book Location" label="Book Location" :required="true" v-model="form.location" :errorMessage="formError.location"
-                        @update:modelValue="formError.location = ''" />
-                </div>
-                <div class="col-span-2">
-                    <VInput placeholder="Insert File Path" label="File Path" :required="true" v-model="form.file_path" :errorMessage="formError.file_path"
-                        @update:modelValue="formError.file_path = ''" />
-                </div>
-                <div class="col-span-2">
-                    <VSelect placeholder="Scan Status" label="Scan" :required="true" v-model="form.is_scan" :options="typeOptions"
-                    :errorMessage="formError.is_scan" @update:modelValue="formError.is_scan = ''" ref="typeSelectHandle" /> 
-                </div>
-                <div class="col-span-2">
-                    <VSelect placeholder="Choose Departemen" :required="true" v-model="form.category_id"
-                        :options="additional.category_list" label="Departemen" :errorMessage="formError.category_id"
-                        @update:modelValue="formError.category_id = ''" />
-                </div>
-                <div class="col-span-2">
-                    <VSelect placeholder="Choose Fungsi" :required="true" v-model="form.utility_id"
-                        :options="additional.utility_list" label="Fungsi" :errorMessage="formError.utility_id"
-                        @update:modelValue="formError.utility_id = ''" />
+                    <VInput placeholder="Insert Description" label="Description" :required="true" v-model="form.description" :errorMessage="formError.description"
+                        @update:modelValue="formError.description = ''" />
                 </div>
             </div>
         </template>

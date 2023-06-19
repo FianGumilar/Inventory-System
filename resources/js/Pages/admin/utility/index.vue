@@ -35,7 +35,7 @@ const breadcrumb = [
     {
         name: "Function Category",
         active: true,
-        to: route('transaction.index')
+        to: route('utility.index')
     },
 ]
 const pagination = ref({
@@ -63,7 +63,7 @@ const props = defineProps({
 })
 
 const getData = debounce(async (page) => {
-    axios.get(route('transaction.getdata'), {
+    axios.get(route('utility.getdata'), {
         params: {
             page: page,
             search: searchFilter.value
@@ -134,7 +134,7 @@ const closeAlert = () => {
 }
 
 const deleteHandle = async () => {
-    axios.delete(route('transaction.delete', { 'id': itemSelected.value.id })
+    axios.delete(route('utility.delete', { 'id': itemSelected.value.id })
     ).then((res) => {
         notify({
             type: "success",
@@ -168,7 +168,7 @@ onMounted(() => {
     <div class="bg-white shadow-lg rounded-sm border border-slate-200"
         :class="isLoading && 'min-h-[40vh] sm:min-h-[50vh]'">
         <header class="block justify-between items-center sm:flex py-6 px-4">
-            <h2 class="font-semibold text-slate-800"> 
+            <h2 class="font-semibold text-slate-800">
                 All Fungsi Categories <span class="text-slate-400 !font-medium ml">{{ pagination.total }}</span>
             </h2>
             <div class="mt-3 sm:mt-0 flex space-x-2 sm:justify-between justify-end">

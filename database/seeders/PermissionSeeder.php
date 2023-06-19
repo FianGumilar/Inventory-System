@@ -61,20 +61,20 @@ class PermissionSeeder extends Seeder
                 'group' => 'master_data',
                 'sub_group' => [
                     [
-                        'name' => 'category',
+                        'name' => 'departemen',
                         'permission' => [
                             [
                                 'name' => 'view_category',
-                                'label' => 'View Category',
+                                'label' => 'View Departemen Category',
                             ]
                         ]
                     ],
                     [
-                        'name' => 'product',
+                        'name' => 'book',
                         'permission' => [
                             [
-                                'name' => 'view_product',
-                                'label' => 'View Product',
+                                'name' => 'view_book',
+                                'label' => 'View Book',
                             ]
                         ]
                     ]
@@ -86,28 +86,19 @@ class PermissionSeeder extends Seeder
                 'group' => 'core',
                 'sub_group' => [
                     [
-                        'name' => 'transaction',
+                        'name' => 'utility',
                         'permission' => [
                             [
-                                'name' => 'view_transaction',
-                                'label' => 'View Transaction',
+                                'name' => 'view_utility',
+                                'label' => 'View Fungsi Category',
                             ]
                         ]
                     ],
-                    [
-                        'name' => 'report',
-                        'permission' => [
-                            [
-                                'name' => 'view_report',
-                                'label' => 'View Report',
-                            ]
-                        ]
-                    ]
                 ]
             ],
         ];
 
-        // Create permissions 
+        // Create permissions
         try {
             $newPermission = [];
             foreach ($permissions as $group) {

@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
-            $table->foreignId('utility_id')->constrained('utilities')->references('id');
+            $table->foreignId('utility_id')->nullable()->constrained('utilities')->references('id');
             $table->string('book_title');
             $table->string('book_number');
             $table->string('location');

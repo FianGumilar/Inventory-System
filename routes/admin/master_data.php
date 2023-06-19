@@ -20,7 +20,7 @@ Route::controller(CategoryController::class)->middleware('can:view_category')->p
     Route::delete('{id}/delete', 'deleteData')->name('delete');
 });
 
-Route::controller(BookController::class)->middleware('can:view_product')->prefix('book')->name('product.')->group(function () {
+Route::controller(BookController::class)->middleware('can:view_book')->prefix('book')->name('book.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('get-data', 'getData')->name('getdata');
     Route::post('create', 'createData')->name('create');

@@ -15,9 +15,9 @@ class GetSidebarMenuAction
             ],
             [
                 'text' => 'Fungsi Category',
-                'url' => route('transaction.index'),
+                'url' => route('utility.index'),
                 'icon' => 'VTransaction',
-                'can' => 'view_transaction'
+                'can' => 'view_utility'
             ],
             [
                 'text' => 'Departemen Category',
@@ -27,18 +27,10 @@ class GetSidebarMenuAction
             ],
             [
                 'text' => 'Book',
-                'url' => route('product.index'),
+                'url' => route('book.index'),
                 'icon' => 'VProduct',
-                'can' => 'view_product'
+                'can' => 'view_book'
             ],
-            /** 
-            [
-                'text' => 'Report',
-                'url' => route('report.index'),
-                'icon' => 'VBook',
-                'can' => 'view_report'
-            ],
-            */
             [
                 'text' => 'Settings',
                 'icon' => 'VSetting',

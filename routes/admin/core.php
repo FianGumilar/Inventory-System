@@ -12,15 +12,10 @@ use App\Http\Controllers\UtilityController;
 |
 */
 
-Route::controller(UtilityController::class)->middleware('can:view_transaction')->prefix('fungsi')->name('transaction.')->group(function () {
+Route::controller(UtilityController::class)->middleware('can:view_utility')->prefix('fungsi')->name('utility.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('get-data', 'getData')->name('getdata');
     Route::post('create', 'createData')->name('create');
     Route::post('{id}/update', 'updateData')->name('update');
     Route::delete('{id}/delete', 'deleteData')->name('delete');
-});
-
-Route::controller(ReportController::class)->middleware('can:view_report')->prefix('report')->name('report.')->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::get('get-data', 'getData')->name('getdata');
 });

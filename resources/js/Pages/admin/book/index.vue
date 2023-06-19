@@ -37,7 +37,7 @@ const breadcrumb = [
     {
         name: "Book",
         active: true,
-        to: route('product.index')
+        to: route('book.index')
     },
 ]
 const pagination = ref({
@@ -66,7 +66,7 @@ const props = defineProps({
 })
 
 const getData = debounce(async (page) => {
-    axios.get(route('product.getdata'), {
+    axios.get(route('book.getdata'), {
         params: {
             page: page,
             search: searchFilter.value,
@@ -155,7 +155,7 @@ function openFile(filePath) {
 }
 
 const deleteHandle = async () => {
-    axios.delete(route('product.delete', { 'id': itemSelected.value.id })
+    axios.delete(route('book.delete', { 'id': itemSelected.value.id })
     ).then((res) => {
         notify({
             type: "success",
@@ -217,11 +217,11 @@ onMounted(() => {
                 <td class="px-4 whitespace-nowrap h-16"> {{ data.book_title }} </td>
                 <td class="px-4 whitespace-nowrap h-16"> {{ data.book_number }} </td>
                 <td class="px-4 whitespace-nowrap h-16"> {{ data.location }} </td>
-                <td class="px-4 whitespace-nowrap h-16"> 
+                <td class="px-4 whitespace-nowrap h-16">
                     <p>{{ data.name }}</p>
                     <p>{{ data.category_name }}</p>
                 </td>
-                <td class="px-4 whitespace-nowrap h-16"> 
+                <td class="px-4 whitespace-nowrap h-16">
                     <p>{{ data.name }}</p>
                     <p>{{ data.utility_name }}</p>
                 </td>
@@ -255,7 +255,7 @@ onMounted(() => {
                         </li>
                     </VDropdownEditMenu>
                 </td>
-            </tr> 
+            </tr>
         </VDataTable>
         <div class="px-4 py-6">
             <VPagination :pagination="pagination" @next="nextPaginate" @previous="previousPaginate" />
